@@ -3,4 +3,7 @@ const express = require("express");
 const app = express();
 app.disable("x-powered-by");
 
-app.get()
+app.get("/", () => {
+  res.json({ message: "hola mundo" });
+});
+
