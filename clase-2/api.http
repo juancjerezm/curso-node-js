@@ -1,8 +1,8 @@
-GET http://localhost:3000/pokemon/ditto
+GET http://localhost:3001/pokemon/ditto
 
 ### Para crear un pokemon
 
-POST http://localhost:3000/pokemon
+POST http://localhost:3001/pokemon
 Content-Type: application/json
 
 {
