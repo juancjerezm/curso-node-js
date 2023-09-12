@@ -2,8 +2,11 @@ import { Router } from "express";
 import { randomUUID } from "node:crypto";
 import { readJSON } from "../utils.js";
 import { validateMovie, validatePartialMovie } from "../schemas/movies.js";
+// import { createRequire } from "node:module";
+// const require = createRequire(import.meta.url);
+// export const readJSON = (path) => require(path);
 
-const movies = readJSON("../movies.json");
+const movies = await readJSON("./movies.json");
 export const moviesRouter = Router();
 
 moviesRouter.get("/", (req, res) => {
