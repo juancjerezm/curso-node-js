@@ -1,5 +1,5 @@
-import { MovieModel } from "../models/movie";
-import { validateMovie, validatePartialMovie } from "../schemas/movies";
+import { MovieModel } from "../models/movie.js";
+import { validateMovie, validatePartialMovie } from "../schemas/movies.js";
 
 export class MovieController {
   static async getAll(req, res) {
@@ -20,7 +20,7 @@ export class MovieController {
     if (!result.success) {
       return res.status(404).json({ error: JSON.parse(result.error.message) });
     }
-    const newMovie = MovieModel.create({ input: result.data });
+    const newMovie = await MovieModel.create({ input: result.data });
     res.status(201).json(newMovie);
   }
   static async delete(req, res) {
@@ -32,13 +32,13 @@ export class MovieController {
     return res.json({ message: "Movie delete" });
   }
 
-  static async patch(req, res) {
+  static async update(req, res) {
     const result = validatePartialMovie(req.body);
     if (!result.success) {
       return res.status(404).json({ error: JSON.parse(result.error.message) });
     }
     const { id } = req.params;
-    const undateMovie = await MovieModel.update({ id, input: result, data });
+    const undateMovie = await MovieModel.update({ id, input: result.data });
     return res.json(undateMovie);
   }
 }
