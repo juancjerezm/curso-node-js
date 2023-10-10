@@ -27,7 +27,7 @@ async function ls(folder) {
     }
 
     const isDirectory = stats.isDirectory();
-    const fileType = isDirectory ? "d" : "f";
+    const fileType = isDirectory ? "d" : "-";
     const fileSize = stats.size;
     const fileModified = stats.mtime.toLocaleString();
 
